@@ -10,7 +10,19 @@
         "#dungeon": {
             "scaleInEditor": 2.35
         },
+        "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx": {
+            "scale": 1.35,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 269.99999999999994,
+                "y": 222.2222222222222
+            }
+        },
+        "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx#dungeon": {
+            "scaleInDock": 2.2464
+        },
         "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx#dungeon-2": {
+            "scaleInDock": 2.7005,
             "scaleInEditor": 4.1566
         }
     },
@@ -23,10 +35,12 @@
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
+        "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx"
     ],
     "project": "Dungeon-01.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
