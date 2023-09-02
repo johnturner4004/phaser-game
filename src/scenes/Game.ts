@@ -24,6 +24,7 @@ export default class Game extends Phaser.Scene {
 
     // debugDraw(wallLayer, this)
 
+    // knight
     this.knight = this.physics.add.sprite(248, 100, 'texture', 'sprites/110.png')
     
     this.anims.create({
@@ -76,6 +77,11 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.knight, wallLayer)
 
     this.cameras.main.startFollow(this.knight, true)
+
+    // skeleton
+    const skeleton = this.add.sprite(100, 100, 'skeleton', 'skeleton/120.png')
+
+    
 	}
 
   update(t: number, dt: number) {
