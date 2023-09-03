@@ -10,12 +10,18 @@ declare global {
 
 enum HealthState {
   IDLE,
-  DAMAGE
+  DAMAGE,
+  DEAD
 }
 
 export default class Knight extends Phaser.Physics.Arcade.Sprite {
   private healthState = HealthState.IDLE
   private damageTime = 0
+  private _health = 3
+
+  get health() {
+    return this._health
+  }
   
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame)
@@ -24,38 +30,63 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
   }
 
   handleDamage(dir: Phaser.Math.Vector2) {
+    if (this._health <= 0) {
+      return
+    }
+
     if (this.healthState === HealthState.DAMAGE) {
       return
     }
 
-    this.setVelocity(dir.x, dir.y)
+    --this._health
 
-    this.setTint(0xff0000)
-
-    this.healthState = HealthState.DAMAGE
-    this.damageTime = 0
+    if (this._health <= 0) {
+      // die
+      this.healthState = HealthState.DEAD
+    } else {
+      this.setVelocity(dir.x, dir.y)
+  
+      this.setTint(0xff0000)
+  
+      this.healthState = HealthState.DAMAGE
+      this.damageTime = 0
+    }
   }
 
   protected preUpdate(t: number, dt: number): void {
-      switch (this.healthState) {
-        case HealthState.DAMAGE:
-          this.damageTime += dt
-          if (this.damageTime > 250) {
-            this.healthState = HealthState.IDLE
-            this.setTint(0xffffff)
-            this.damageTime = 0
-            
-          }
-          break
-        
-        case HealthState.IDLE:
+    super.preUpdate(t, dt)
 
-          break
-      }
+    switch (this.healthState) {
+      case HealthState.DAMAGE:
+        this.damageTime += dt
+        if (this.damageTime > 250) {
+          this.healthState = HealthState.IDLE
+          this.setTint(0xffffff)
+          this.damageTime = 0
+          
+        }
+
+        if (Math.floor(this.damageTime / 10) % 2 === 1) {
+          this.setTint(0xff0000)
+        } else {
+          this.setTint(0xffffff)
+        }
+        break
+
+      case HealthState.DEAD:
+        
+        break
+      
+      case HealthState.IDLE:
+
+        break
+    }
   }
 
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys) {
-    if (!cursors || this.healthState === HealthState.DAMAGE) {
+    if (!cursors 
+      || this.healthState === HealthState.DAMAGE 
+      || this.healthState === HealthState.DEAD) {
       return
     }
 

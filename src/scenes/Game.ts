@@ -6,6 +6,7 @@ import Skeleton from '../enemies/Skeleton'
 import { createCharacterAnims } from '../anims/CharacterAnims'
 import { createSkeletonAnims } from '../anims/EnemyAnims'
 import { debugDraw } from '../utils/debug'
+import { sceneEvents } from '../events/EventsCenter'
 
 export default class Game extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
@@ -20,6 +21,8 @@ export default class Game extends Phaser.Scene {
 	}
 
 	create() {
+    this.scene.run('game-ui')
+
     createCharacterAnims(this.anims)
     createSkeletonAnims(this.anims)
 
@@ -31,7 +34,7 @@ export default class Game extends Phaser.Scene {
 
     wallLayer.setCollisionByProperty({ collides: true})
 
-    // debugDraw(wallLayer, this)
+    debugDraw(wallLayer, this)
 
     // knight
     this.knight = this.add.knight(248, 100, 'texture')
@@ -64,6 +67,8 @@ export default class Game extends Phaser.Scene {
     const dir = new Phaser.Math.Vector2(dx, dy).normalize().scale(200)
 
     this.knight.handleDamage(dir)
+
+    sceneEvents.emit('player-health-changed', this.knight.health)
   }
 
   update(t: number, dt: number) {

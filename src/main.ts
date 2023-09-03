@@ -1,4 +1,5 @@
 import Game from './scenes/Game'
+import GameUI from './scenes/GameUI'
 import Phaser from 'phaser'
 import Preloader from './scenes/Preloader'
 
@@ -14,7 +15,7 @@ const config: Phaser.Types.Core.GameConfig = {
       debug: true,
 		},
 	},
-	scene: [Preloader, Game],
+	scene: [Preloader, Game, GameUI],
   scale: {
     zoom: 2,
   },
