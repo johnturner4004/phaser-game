@@ -1,3 +1,6 @@
+import '../characters/Knight'
+
+import Knight from '../characters/Knight'
 import Phaser from 'phaser'
 import Skeleton from '../enemies/Skeleton'
 import { createCharacterAnims } from '../anims/CharacterAnims'
@@ -6,7 +9,7 @@ import { debugDraw } from '../utils/debug'
 
 export default class Game extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
-  private knight!: Phaser.Physics.Arcade.Sprite
+  private knight!: Knight
 
 	constructor() {
 		super('game')
@@ -31,9 +34,7 @@ export default class Game extends Phaser.Scene {
     // debugDraw(wallLayer, this)
 
     // knight
-    this.knight = this.physics.add.sprite(248, 100, 'texture', 'sprites/110.png')
-
-    this.knight.anims.play('knight-idle-down')
+    this.knight = this.add.knight(248, 100, 'texture')
 
     this.cameras.main.startFollow(this.knight, true)
 
@@ -50,35 +51,24 @@ export default class Game extends Phaser.Scene {
 
     this.physics.add.collider(this.knight, wallLayer)
     this.physics.add.collider(skeletons, wallLayer)
+
+    this.physics.add.collider(skeletons, this.knight, this.handlePlayerSkeletonCollision, undefined, this)
 	}
 
-  update(t: number, dt: number) {
-    if (!this.cursors || !this.knight) {
-      return
-    }
+  private handlePlayerSkeletonCollision(obj1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) {
+    const skeleton = obj2 as Skeleton
 
-    const speed = 100;
-    if (this.cursors.left?.isDown) {
-      this.knight.anims.play('knight-run-right', true)
-      this.knight.scaleX = -1
-      this.knight.body.offset.x = 16
-      this.knight.setVelocity(-speed, 0)
-    } else if (this.cursors.right?.isDown) {
-      this.knight.anims.play('knight-run-right', true)
-      this.knight.scaleX = 1
-      this.knight.body.offset.x = 0
-      this.knight.setVelocity(speed, 0)
-    } else if (this.cursors.up?.isDown) {
-      this.knight.anims.play('knight-run-up', true)
-      this.knight.setVelocity(0, -speed)
-    } else if (this.cursors.down?.isDown) {
-      this.knight.anims.play('knight-run-down', true)
-      this.knight.setVelocity(0, speed)
-    } else {
-      const state = this.knight.anims.currentAnim.key.split('-')
-      state[1] = 'idle'
-      this.knight.anims.play(state.join('-'))
-      this.knight.setVelocity(0, 0)
+    const dx = this.knight.x - skeleton.x
+    const dy = this.knight.y - skeleton.y
+
+    const dir = new Phaser.Math.Vector2(dx, dy).normalize().scale(200)
+
+    this.knight.handleDamage(dir)
+  }
+
+  update(t: number, dt: number) {
+    if (this.knight) {
+      this.knight.update(this.cursors)
     }
   }
 

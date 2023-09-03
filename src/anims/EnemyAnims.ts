@@ -37,7 +37,7 @@ const createSkeletonAnims = (anims: Phaser.Animations.AnimationManager) => {
   })
 
   anims.create({
-    key: 'skeleton-run-down',
+    key: 'skeleton-run-right',
     frames: [
       { key: 'skeleton', frame: 'skeleton/128.png' },
       { key: 'skeleton', frame: 'skeleton/129.png' }

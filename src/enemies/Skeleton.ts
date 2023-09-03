@@ -59,15 +59,21 @@ export default class Skeleton extends Phaser.Physics.Arcade.Sprite {
       switch (this.direction) {
         case Direction.UP:
           this.setVelocity(0, -speed)
+          this.anims.play('skeleton-run-up', true)
           break
         case Direction.DOWN:
           this.setVelocity(0, speed)
+          this.anims.play('skeleton-run-down', true)
           break
         case Direction.RIGHT:
           this.setVelocity(speed, 0)
+          this.anims.play('skeleton-run-right', true)
+          this.setFlipX(false)
           break
         case Direction.LEFT:
           this.setVelocity(-speed, 0)
+          this.anims.play('skeleton-run-right', true)
+          this.setFlipX(true)
           break
       }
   }
