@@ -45,6 +45,16 @@ const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) => {
     repeat: -1,
     frameRate: 5
   })
+
+  anims.create({
+    key: 'knight-death',
+    frames: [
+      { key: 'texture', frame: 'sprites/111.png' },
+      { key: 'texture', frame: 'sprites/112.png' },
+      { key: 'texture', frame: 'sprites/110.png' },
+    ],
+    frameRate: 5
+  })
 }
 
 export {
