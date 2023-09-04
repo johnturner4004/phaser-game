@@ -1,4 +1,6 @@
+import Chest from '../items/Chest'
 import Phaser from 'phaser'
+import { sceneEvents } from '../events/EventsCenter'
 
 declare global {
   namespace Phaser.GameObjects {
@@ -18,7 +20,9 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
   private healthState = HealthState.IDLE
   private damageTime = 0
   private _health = 3
+  private _coins = 0
   private swords?: Phaser.Physics.Arcade.Group
+  private activeChest?: Chest
 
   get health() {
     return this._health
@@ -32,6 +36,10 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
 
   setSwords(swords: Phaser.Physics.Arcade.Group) {
     this.swords = swords
+  }
+
+  setChest(chest: Chest) {
+    this.activeChest = chest
   }
 
   handleDamage(dir: Phaser.Math.Vector2) {
@@ -139,28 +147,39 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
     }
 
     if (Phaser.Input.Keyboard.JustDown(cursors.space!)) {
-      this.throwSword()
+      if (this.activeChest) {
+        const coins = this.activeChest.open()
+        this._coins += coins
+        sceneEvents.emit('player-coins-changed', this._coins)
+      } else {
+        this.throwSword()
+      }
       return
     }
 
     const speed = 100;
-    if (cursors.left?.isDown) {
+    const leftDown = cursors.left?.isDown
+    const rightDown = cursors.right?.isDown
+    const upDown = cursors.up?.isDown
+    const downDown = cursors.down?.isDown
+
+    if (leftDown) {
       this.anims.play('knight-run-right', true)
       this.scaleX = -1
       this.body.offset.x = 16
       this.setVelocity(-speed, 0)
 
-    } else if (cursors.right?.isDown) {
+    } else if (rightDown) {
       this.anims.play('knight-run-right', true)
       this.scaleX = 1
       this.body.offset.x = 0
       this.setVelocity(speed, 0)
 
-    } else if (cursors.up?.isDown) {
+    } else if (upDown) {
       this.anims.play('knight-run-up', true)
       this.setVelocity(0, -speed)
 
-    } else if (cursors.down?.isDown) {
+    } else if (downDown) {
       this.anims.play('knight-run-down', true)
       this.setVelocity(0, speed)
 
@@ -169,6 +188,10 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
       state[1] = 'idle'
       this.anims.play(state.join('-'))
       this.setVelocity(0, 0)
+    }
+
+    if (leftDown || rightDown || upDown || downDown) {
+      this.activeChest = undefined
     }
   }
 }

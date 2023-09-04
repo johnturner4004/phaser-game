@@ -5,6 +5,7 @@
     },
     "activeFile": "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "#dungeon": {
@@ -14,8 +15,8 @@
             "scale": 1.35,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 269.99999999999994,
-                "y": 223.33333333333331
+                "x": 269.2592592592592,
+                "y": 221.11111111111106
             }
         },
         "/Users/john/projects/phaser-game/public/tiles/dungeon.tmx#dungeon": {

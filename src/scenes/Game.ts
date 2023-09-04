@@ -1,9 +1,11 @@
 import '../characters/Knight'
 
+import Chest from '../items/Chest'
 import Knight from '../characters/Knight'
 import Phaser from 'phaser'
 import Skeleton from '../enemies/Skeleton'
 import { createCharacterAnims } from '../anims/CharacterAnims'
+import { createChestAnims } from '../anims/TreasureAnims'
 import { createSkeletonAnims } from '../anims/EnemyAnims'
 import { debugDraw } from '../utils/debug'
 import { sceneEvents } from '../events/EventsCenter'
@@ -29,6 +31,7 @@ export default class Game extends Phaser.Scene {
 
     createCharacterAnims(this.anims)
     createSkeletonAnims(this.anims)
+    createChestAnims(this.anims)
 
     this.swords = this.physics.add.group({
       classType: Phaser.Physics.Arcade.Image
@@ -38,15 +41,23 @@ export default class Game extends Phaser.Scene {
     const tileset = map.addTilesetImage('dungeon-2', 'tiles')
 
     map.createLayer('Ground', (tileset as Phaser.Tilemaps.Tileset), 0, 0) as Phaser.Tilemaps.TilemapLayer
-    const wallLayer = map.createLayer('Walls', (tileset as Phaser.Tilemaps.Tileset), 0, 0) as Phaser.Tilemaps.TilemapLayer
 
-    wallLayer.setCollisionByProperty({ collides: true})
-
-    // debugDraw(wallLayer, this)
-
-    // knight
     this.knight = this.add.knight(248, 100, 'texture')
     this.knight.setSwords(this.swords)
+
+    const wallLayer = map.createLayer('Walls', (tileset as Phaser.Tilemaps.Tileset), 0, 0) as Phaser.Tilemaps.TilemapLayer
+    wallLayer.setCollisionByProperty({ collides: true})
+
+    const chests = this.physics.add.staticGroup({
+      classType: Chest
+    })
+
+    const chestsLayer = map.getObjectLayer('Chests')
+    chestsLayer.objects.forEach((chestObj) => {
+      chests.get(chestObj.x! + chestObj.width! * 0.5, chestObj.y! - chestObj.height! * 0.5, 'treasure')
+    })
+
+    // debugDraw(wallLayer, this)
 
     this.cameras.main.startFollow(this.knight, true)
 
@@ -64,11 +75,18 @@ export default class Game extends Phaser.Scene {
     this.physics.add.collider(this.knight, wallLayer)
     this.physics.add.collider(this.skeletons, wallLayer)
 
+    this.physics.add.collider(this.knight, chests, this.handlePlayerChestCollision, undefined, this)
+
     this.physics.add.collider(this.swords, wallLayer, this.handleSwordWallCollision, undefined, this)
     this.physics.add.collider(this.swords, this.skeletons, this.handleSwordSkeletonCollision, undefined, this)
 
     this.playerSkeletonCollider = this.physics.add.collider(this.skeletons, this.knight, this.handlePlayerSkeletonCollision, undefined, this)
 	}
+
+  private handlePlayerChestCollision(obj1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) {
+    const chest = obj2 as Chest
+    this.knight.setChest(chest)
+  }
 
   private handleSwordWallCollision(ojb1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) {
     this.swords.killAndHide(ojb1)
