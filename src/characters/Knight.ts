@@ -98,6 +98,10 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite {
     const angle = vec.angle()
     const sword = this.swords.get(this.x, this.y, 'sword') as Phaser.Physics.Arcade.Image
 
+    if (!sword) {
+      return
+    }
+
     sword.setActive(true)
     sword.setVisible(true)
 

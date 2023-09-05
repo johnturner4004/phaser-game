@@ -1,0 +1,523 @@
+{
+	"textures": [
+		{
+			"image": "coin",
+			"format": "RGBA8888",
+			"size": {
+				"w": 8,
+				"h": 192
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "coin/0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 8,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 16,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 24,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 32,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 40,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 48,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 56,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 64,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/9.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 72,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/10.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 80,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/11.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 88,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/12.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 96,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/13.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 104,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/14.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 112,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/15.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 120,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/16.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 128,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/17.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 136,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/18.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 144,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/19.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 152,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/20.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 160,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/21.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 168,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/22.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 176,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "coin/23.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 0,
+						"y": 184,
+						"w": 8,
+						"h": 8
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

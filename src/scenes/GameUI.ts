@@ -10,10 +10,23 @@ export default class GameUI extends Phaser.Scene {
   }
 
   create() {
-    const coinsLabel = this.add.text(5, 20, '0')
+    const coin = this.add.sprite(10, 24, 'coin', 'coin/0.png')
+
+    this.anims.create({
+      key: 'coin-spin',
+      frames: this.anims.generateFrameNames('coin', { start: 0, end: 23, prefix: 'coin/', suffix: '.png'}),
+      frameRate: 10,
+      repeat: -1
+    })
+
+    coin.anims.play('coin-spin')
+
+    const coinsLabel = this.add.text(14, 19.1, '0', {
+      fontSize: '10.23px'
+    })
 
     sceneEvents.on('player-coins-changed', (coins: number) => {
-      coinsLabel.text = coins.toString()
+      coinsLabel.text = coins.toLocaleString()
     })
 
     this.hearts = this.add.group({
@@ -39,7 +52,6 @@ export default class GameUI extends Phaser.Scene {
   }
 
   private handlePlayerHealthChanged(health: number) {
-    console.log("hello", health)
     this.hearts.children.each((go, idx) => {
       const heart = go as Phaser.GameObjects.Image
 

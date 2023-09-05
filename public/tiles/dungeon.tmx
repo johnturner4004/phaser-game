@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="6">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="11">
  <editorsettings>
   <export target="dungeon-01.json" format="json"/>
  </editorsettings>
@@ -3376,5 +3376,11 @@
   <object id="1" gid="820" x="240.148" y="48" width="16" height="16"/>
   <object id="2" gid="820" x="19.4074" y="256.889" width="16" height="16"/>
   <object id="3" gid="820" x="560.889" y="48.7407" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="4" name="Skeletons">
+  <object id="7" gid="1314" x="80.1481" y="113.926" width="16" height="16"/>
+  <object id="8" gid="1314" x="80.1481" y="307.259" width="16" height="16"/>
+  <object id="9" gid="1314" x="639.407" y="48.7407" width="16" height="16"/>
+  <object id="10" name="Bob" gid="1314" x="465.333" y="50.2222" width="16" height="16"/>
  </objectgroup>
 </map>

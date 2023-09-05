@@ -34,7 +34,8 @@ export default class Game extends Phaser.Scene {
     createChestAnims(this.anims)
 
     this.swords = this.physics.add.group({
-      classType: Phaser.Physics.Arcade.Image
+      classType: Phaser.Physics.Arcade.Image,
+      maxSize: 3
     })
 
     const map = this.make.tilemap({ key: 'dungeon' })
@@ -70,7 +71,10 @@ export default class Game extends Phaser.Scene {
       }
     })
 
-    this.skeletons.get(100, 100, 'skeleton')
+    const skeletonLayer = map.getObjectLayer('Skeletons')
+    skeletonLayer.objects.forEach(skeletonObj => {
+      this.skeletons.get(skeletonObj.x! + skeletonObj.width! * 0.5, skeletonObj.y! - skeletonObj.height! * 0.5, 'skeleton')
+    })
 
     this.physics.add.collider(this.knight, wallLayer)
     this.physics.add.collider(this.skeletons, wallLayer)
@@ -93,8 +97,8 @@ export default class Game extends Phaser.Scene {
   }
 
   private handleSwordSkeletonCollision(obj1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) {
-    this.swords.killAndHide(obj1)
     this.skeletons.killAndHide(obj2)
+    this.swords.killAndHide(obj1)
   }
 
   private handlePlayerSkeletonCollision(obj1: Phaser.GameObjects.GameObject, obj2: Phaser.GameObjects.GameObject) {
